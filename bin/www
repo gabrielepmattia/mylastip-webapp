@@ -13,7 +13,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**
@@ -98,7 +98,7 @@ var dserver = require('net').createServer(function (socket) {
     socket.on('data', function (data) {
         console.log(data.toString());
     });
-}).listen(5400);
+}).listen(35400);
 
 dserver.on('listening', function (listening) {
     var address = dserver.address();
