@@ -16,8 +16,8 @@ dserver.port = port;
 dserver.listen(port, ipaddress);
 
 dserver.on('listening', function (listening) {
-  console.log("LISTENING!!!");  
-  //var address = dserver.address();
+    console.log("LISTENING!!!");
+    //var address = dserver.address();
     //debug_daemon("Daemon server started, listening on " + address.localAddress + ":" + address.port);
 });
 
