@@ -41,11 +41,11 @@ dserver.on('listening', function (listening) {
 dserver.on('error', function (error) {
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requires elevated privileges');
+            console.error('Listen requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            console.error(bind + ' is already in use');
+            console.error('Listen is already in use');
             process.exit(1);
             break;
         default:
