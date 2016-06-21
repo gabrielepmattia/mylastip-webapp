@@ -59,8 +59,8 @@ dserver.on('error', function (error) {
  * Listen on provided port, on all network interfaces.
  */
 
-//server.listen(port_webserver, ipaddress);
-dserver.listen(port_daemon, ipaddress);
+server.listen(port_webserver, ipaddress);
+//dserver.listen(port_daemon, ipaddress);
 server.on('error', onError);
 server.on('listening', onListening);
 //dserver.on('error', onError);
