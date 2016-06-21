@@ -13,8 +13,8 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
-app.set('port', port);
+//var port = normalizePort(process.env.PORT || '8080');
+//app.set('port', port);
 
 /**
  * Create HTTP server.
@@ -25,7 +25,7 @@ var server = http.createServer(app);
 /** 
  * !! OpenShift rules !!
  **/
-server.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+server.ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 server.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 /**
@@ -106,7 +106,7 @@ var dserver = require('net').createServer(function (socket) {
     });
 })
 // OpenShift
-dserver.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+dserver.ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 dserver.port      = process.env.OPENSHIFT_NODEJS_PORT || 8000;
 
 dserver.listen(8000);
