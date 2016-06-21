@@ -14,9 +14,10 @@ var dserver = require('net').createServer(function (socket) {
 dserver.address = ipaddress;
 dserver.port = port;
 dserver.listen(port, ipaddress);
-
+/*
 dserver.on('listening', function (listening) {
     var address = dserver.address();
     debug_daemon("Daemon server started, listening on " + address.localAddress + ":" + address.port);
 });
 
+*/
