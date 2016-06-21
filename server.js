@@ -13,7 +13,7 @@ var dserver = require('net').createServer(function (socket) {
 
 dserver.address = ipaddress;
 dserver.port = port;
-dserver.listen(port);
+dserver.listen(port, ipaddress);
 
 dserver.on('listening', function (listening) {
     var address = dserver.address();
