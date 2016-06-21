@@ -38,6 +38,20 @@ dserver.on('listening', function (listening) {
     var address = dserver.address();
     debug_daemon("Daemon server started, listening on " + address.localAddress + ":" + address.port);
 });
+dserver.on('error', function (error) {
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+});
 
 /**
  * Listen on provided port, on all network interfaces.
