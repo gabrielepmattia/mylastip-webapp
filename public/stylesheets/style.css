@@ -102,6 +102,12 @@ p {
 #footer {
     display: inline-block;
     width: 100%;
+    text-align: center;
+}
+
+/* Footer styles */
+#footer .copyright {
+    font-size: xx-small;
 }
 
 /* Display page */
@@ -277,4 +283,21 @@ p {
 .lastformsubmit:hover {
     background-color: #CCC;
 
+}
+
+/* General styles */
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.getstartedcontainer {
+    padding-top: 4%;
 }

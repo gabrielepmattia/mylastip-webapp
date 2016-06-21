@@ -18,3 +18,8 @@ mixin alert(style)
     div( class=["alert", "alert-dismissable", "alert-" + style] )
         button.close( type="button", data-dismiss="alert" ) ×
         block
+
+//- Navbar
+mixin nav(style)
+    nav(class=["nav", "nav-" + style])
+        block

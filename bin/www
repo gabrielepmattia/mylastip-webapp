@@ -28,7 +28,7 @@ var server = http.createServer(app);
 
 /**
  * MyLastIPd server
- */
+
 var dserver = net.createServer(function (socket) {
     debug_daemon("Client connected at address " + socket.remoteAddress);
     socket.on('data', function (data) {
@@ -54,7 +54,7 @@ dserver.on('error', function (error) {
             throw error;
     }
 });
-
+ */
 /**
  * Listen on provided port, on all network interfaces.
  */
