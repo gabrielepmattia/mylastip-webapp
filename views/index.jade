@@ -1,6 +1,14 @@
 include mixins
 extends layout
 
+block append scripts
+    script(type='text/javascript').
+        $(document).ready(function () {
+            $('#page').fadeIn(1000, function () {
+                console.log("Complete!");
+            });
+        });
+
 block content
     #page
         p With myLastIP you can know the IP of your machine without buy a static one.

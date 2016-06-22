@@ -23,3 +23,26 @@ mixin alert(style)
 mixin nav(style)
     nav(class=["nav", "nav-" + style])
         block
+
+// Input
+mixin inputform(type, placeholder, glyph)
+    div.form-group.border
+        div.input-group
+            span(id="#basic-addon1").input-group-addon #{glyph}
+            input(type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            block
+
+mixin inputFormGlyph(type, placeholder, glyph, text)
+    div.form-group.border
+        div.input-group
+            span(id="#basic-addon1").input-group-addon
+                span(class="glyphicon glyphicon-" + glyph, aria-hidden="true") #{text}
+            input(type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            block
+
+mixin buttonGroup(label)
+    div(role="group", aria-label=label).btn-group
+        block
+mixin buttonGroupElement(label)
+    button(type="button").btn.btn-default #{label}
+    block

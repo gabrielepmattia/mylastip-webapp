@@ -1,0 +1,21 @@
+include mixins
+extends layout
+
+block append scripts
+    script(type='text/javascript').
+        $(document).ready(function () {
+            //$('#page').fadeOut(1000, function () {
+
+            //});
+        });
+
+block content
+    #page
+        h1 Login
+            div.inputform
+                +inputFormGlyph("text", "Username", "user", "")
+                +inputFormGlyph("password", "Password", "console", "")
+
+            +buttonGroup("").center
+                +buttonGroupElement("Login")
+                +buttonGroupElement("Register")

@@ -219,6 +219,13 @@ p {
 
 }
 
+.inputform {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+}
+
 .topforminput {
     border-radius: 5px 5px 0 0;
     border: 1px solid rgb(179, 179, 179);
