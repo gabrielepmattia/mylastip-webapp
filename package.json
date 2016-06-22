@@ -17,6 +17,7 @@
     "passport": "latest",
     "passport-jwt": "latest",
     "mongoose": "latest",
-    "bcrypt": "latest"
+    "bcrypt": "latest",
+    "jwt-simple": "latest"
   }
 }

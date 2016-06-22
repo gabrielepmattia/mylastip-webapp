@@ -4,11 +4,25 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var config = require('./config/common');
+var jwt = require('jwt-simple');
+var User = require('./models/user');
 
+// Instantiate the app
+var app = express();
+
+// Instantiate the routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
+var apis = require('./routes/apis');
+var dashboard = require('./routes/dashboard')
+// And use the routes in the app
+app.use('/', routes);
+app.use('/users', users);
+app.use('/api', apis);
+app.use('/dashboard', dashboard);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,10 +36,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Path
-app.use('/', routes);
-app.use('/users', users);
-
+// Prepare passport
+app.use(passport.initialize());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
