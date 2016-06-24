@@ -43,12 +43,13 @@ router.post('/authenticate', function (req, res) {
             // check if password matches
             user.comparePassword(req.body.password, function (err, isMatch) {
                 if (isMatch && !err) {
-                    // if user is found and password is right create a token
+                    // if user is found and password is right create a token that will contain the entire
+                    // user's record with id, username, password, ecc..
                     var token = jwt.sign(user, config.secret, {
                         expiresIn: 10080 // in seconds
                     });
                     // return the information including token as JSON
-                    res.json({success: true, token: 'JWT ' + token});
+                    res.json({success: true, token: token});
                     //res.render('authenticate', {token: token});
                 } else {
                     res.send({success: false, msg: 'Authentication failed. Wrong password.'});

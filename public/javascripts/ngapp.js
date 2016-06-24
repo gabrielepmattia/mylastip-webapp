@@ -1,6 +1,6 @@
-var mylastip = angular.module('mylastip', []);
+var mylastip = angular.module('mylastip', ['ngCookies']);
 
-mylastip.controller('UserLogin', function ($scope, $http, $window) {
+mylastip.controller('UserLogin', function ($scope, $http, $window, $cookies) {
     $scope.user = {username: 'john.doe', password: 'foobar'};
     $scope.message = '';
     $scope.submit = function () {
@@ -13,7 +13,13 @@ mylastip.controller('UserLogin', function ($scope, $http, $window) {
                     $scope.message = 'Name or password are invalid.';
                 }
                 else {
+                    // Leave the token even in the session storage
                     $window.sessionStorage.token = data.token;
+                    // Let's prepare the cookie!
+                    var expireDate = new Date();
+                    expireDate.setDate(expireDate.getDate() + 1); // 1 year
+                    $cookies.put("token", data.token, {'expires': expireDate});
+                    // Update the message
                     $scope.message = 'Welcome';
                 }
             })
@@ -28,23 +34,24 @@ mylastip.controller('UserLogin', function ($scope, $http, $window) {
 
 mylastip.factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
-        request: function (config) {
+        "request": function (config) {
+            /*
             config.headers = config.headers || {};
             if ($window.sessionStorage.token) {
                 config.headers.Authorization = $window.sessionStorage.token;
                 config.headers['TestHEADER'] = "this is a test present";
             } else {
                 config.headers['TestHEADER'] = "this is a test not present";
-            }
+             }*/
             config.headers['TestHEADER'] = "test";
             return config;
-        },
+        }/*,
         response: function (response) {
             if (response.status === 401) {
                 // handle the case where the user is not authenticated
             }
             return response || $q.when(response);
-        }
+         }*/
     };
 });
 

@@ -10,14 +10,16 @@ html(ng-app="mylastip")
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Ubuntu:400,300')
-        script(src='/javascripts/angular.js')
+        script(src='/javascripts/jquery-1.9.1.js')
+        script(src='/javascripts/bootstrap.min.js')
+        script(src='/javascripts/jquery-ui.min.js')
+
+        script(src='/javascripts/angular.min.js')
+        script(src='/javascripts/angular-cookies.min.js')
         script(src='/javascripts/ngapp.js')
 
     body
         block scripts
-            script(src='/javascripts/jquery-1.9.1.js')
-            script(src='/javascripts/bootstrap.min.js')
-            script(src='/javascripts/jquery-ui.min.js')
 
 
         block header

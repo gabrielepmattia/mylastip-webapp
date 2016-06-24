@@ -20,6 +20,7 @@
     "bcrypt": "latest",
     "jwt-simple": "latest",
     "jsonwebtoken": "latest",
-    "angular": "latest"
+    "angular": "latest",
+    "angular-cookies": "latest"
   }
 }
