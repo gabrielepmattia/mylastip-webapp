@@ -4,6 +4,7 @@ var router = express.Router();
 var passport = require('passport');
 var config = require('../config/common');
 var User = require('../models/user');
+var jwt = require('jsonwebtoken');
 // Pass passport for configuration
 require('../config/passport')(passport);
 
@@ -32,7 +33,7 @@ router.post('/signup', function (req, res) {
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 router.post('/authenticate', function (req, res) {
     User.findOne({
-        name: req.body.name
+        name: req.body.username
     }, function (err, user) {
         if (err) throw err;
 
@@ -43,9 +44,12 @@ router.post('/authenticate', function (req, res) {
             user.comparePassword(req.body.password, function (err, isMatch) {
                 if (isMatch && !err) {
                     // if user is found and password is right create a token
-                    var token = jwt.encode(user, config.secret);
+                    var token = jwt.sign(user, config.secret, {
+                        expiresIn: 10080 // in seconds
+                    });
                     // return the information including token as JSON
                     res.json({success: true, token: 'JWT ' + token});
+                    //res.render('authenticate', {token: token});
                 } else {
                     res.send({success: false, msg: 'Authentication failed. Wrong password.'});
                 }

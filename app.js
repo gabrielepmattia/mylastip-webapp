@@ -6,24 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('./config/common');
 var jwt = require('jwt-simple');
+var config = require('./config/common');
 var User = require('./models/user');
 
 // Instantiate the app
 var app = express();
 
-// Instantiate the routes
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var apis = require('./routes/apis');
-var dashboard = require('./routes/dashboard')
-// And use the routes in the app
-app.use('/', routes);
-app.use('/users', users);
-app.use('/api', apis);
-app.use('/dashboard', dashboard);
-
+// Capability for including angular
+app.use(express.static(__dirname + '/public'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -35,6 +26,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Instantiate the routes
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var apis = require('./routes/apis');
+var dashboard = require('./routes/dashboard')
+// And use the routes in the app
+app.use('/', routes);
+app.use('/users', users);
+app.use('/api', apis);
+app.use('/dashboard', dashboard);
+// Routes files needed
+
 
 // Prepare passport
 app.use(passport.initialize());

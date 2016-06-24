@@ -18,6 +18,8 @@
     "passport-jwt": "latest",
     "mongoose": "latest",
     "bcrypt": "latest",
-    "jwt-simple": "latest"
+    "jwt-simple": "latest",
+    "jsonwebtoken": "latest",
+    "angular": "latest"
   }
 }

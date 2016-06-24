@@ -25,19 +25,19 @@ mixin nav(style)
         block
 
 // Input
-mixin inputform(type, placeholder, glyph)
+mixin inputform(name, type, placeholder, glyph)
     div.form-group.border
         div.input-group
             span(id="#basic-addon1").input-group-addon #{glyph}
-            input(type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
             block
 
-mixin inputFormGlyph(type, placeholder, glyph, text)
+mixin inputFormGlyph(name, type, placeholder, glyph, text)
     div.form-group.border
         div.input-group
             span(id="#basic-addon1").input-group-addon
                 span(class="glyphicon glyphicon-" + glyph, aria-hidden="true") #{text}
-            input(type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
             block
 
 mixin buttonGroup(label)
