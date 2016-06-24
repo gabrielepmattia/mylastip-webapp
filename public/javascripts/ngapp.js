@@ -17,7 +17,7 @@ mylastip.controller('UserLogin', function ($scope, $http, $window, $cookies) {
                     $window.sessionStorage.token = data.token;
                     // Let's prepare the cookie!
                     var expireDate = new Date();
-                    expireDate.setDate(expireDate.getDate() + 1); // 1 year
+                    expireDate.setDate(expireDate.getDate() + 1); // 1 day for now
                     $cookies.put("token", data.token, {'expires': expireDate});
                     // Update the message
                     $scope.message = 'Welcome';
@@ -32,26 +32,27 @@ mylastip.controller('UserLogin', function ($scope, $http, $window, $cookies) {
     };
 });
 
+/**
+ * This is not used for now but I think it can be used to speed up login process. Interceptor works only
+ * withing the $http calls and not for every get request in the browser, so how can I set the auth header
+ * with this method? User uses the browser to navigate, you know.. :)
+ */
 mylastip.factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
         "request": function (config) {
-            /*
+
             config.headers = config.headers || {};
             if ($window.sessionStorage.token) {
                 config.headers.Authorization = $window.sessionStorage.token;
-                config.headers['TestHEADER'] = "this is a test present";
-            } else {
-                config.headers['TestHEADER'] = "this is a test not present";
-             }*/
-            config.headers['TestHEADER'] = "test";
+            }
             return config;
-        }/*,
+        },
         response: function (response) {
             if (response.status === 401) {
                 // handle the case where the user is not authenticated
             }
             return response || $q.when(response);
-         }*/
+        }
     };
 });
 
