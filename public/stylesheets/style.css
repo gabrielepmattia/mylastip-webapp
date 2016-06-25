@@ -66,6 +66,11 @@ p {
     margin-top: -10px;
 }
 
+.beside-titles{
+    font-size: medium;
+    font-weight: 300;
+}
+
 /* Wrappers */
 #header {
     text-align: center;
@@ -221,9 +226,11 @@ p {
 
 .inputform {
     padding-top: 20px;
-    padding-left: 30px;
+    /*padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 15px;
+    padding-bottom: 15px;*/
+    max-width: 250px;
+    display: inline-block;
 }
 
 .topforminput {
@@ -292,6 +299,12 @@ p {
 
 }
 
+.beside-loginform{
+    max-width: 300px;
+}
+
+
+
 /* General styles */
 .center {
     text-align: center;
@@ -307,4 +320,15 @@ p {
 
 .getstartedcontainer {
     padding-top: 4%;
+}
+
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+.width100{
+    width: 100%;
 }

@@ -10,11 +10,19 @@ block append scripts
 
 block content
     h1 Login
-    div.inputform
-        +inputFormGlyph("name","text", "Username", "user", "", "user.username")
-        +inputFormGlyph("password","password", "Password", "console", "", "user.password")
+    div.beside-titles where magic happens...
 
-        +buttonGroup("").center
-            +buttonGroupElement("Login", "submit()")
-            +buttonGroupElement("Register")
-        p {{message}}
+    #login-container.width100.center
+        div.inputform
+            +inputFormGlyph("name","text", "Username", "user", "", "user.username")
+            +inputFormGlyph("password","password", "Password", "console", "", "user.password")
+
+            +buttonGroup("").center
+                +buttonGroupElement("Login", "submit()")
+                +buttonGroupElement("Register")
+            p {{message}}
+
+    //#login-container.center
+        here
+        div.beside-loginform.float-right
+            p Use this form for login and once you entered enjoy the admin panel of you devices!
