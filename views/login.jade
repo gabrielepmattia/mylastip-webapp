@@ -1,5 +1,4 @@
 include mixins
-extends layout
 
 block append scripts
     script(type='text/javascript').
@@ -10,13 +9,12 @@ block append scripts
         });
 
 block content
-    #page
-        h1 Login
-        div(ng-controller="UserLogin").inputform
-            +inputFormGlyph("name","text", "Username", "user", "", "user.username")
-            +inputFormGlyph("password","password", "Password", "console", "", "user.password")
+    h1 Login
+    div.inputform
+        +inputFormGlyph("name","text", "Username", "user", "", "user.username")
+        +inputFormGlyph("password","password", "Password", "console", "", "user.password")
 
-            +buttonGroup("").center
-                +buttonGroupElement("Login", "submit()")
-                +buttonGroupElement("Register")
-            p {{message}}
+        +buttonGroup("").center
+            +buttonGroupElement("Login", "submit()")
+            +buttonGroupElement("Register")
+        p {{message}}

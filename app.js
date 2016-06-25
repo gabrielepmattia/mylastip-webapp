@@ -13,11 +13,10 @@ var User = require('./models/user');
 // Instantiate the app
 var app = express();
 
-// Capability for including angular
-app.use(express.static(__dirname + '/public'));
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
+// view engine setup -- no longer needed with angular
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,21 +27,34 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Instantiate the routes
-var routes = require('./routes/index');
-var users = require('./routes/users');
+//var routes = require('./routes/index');
+//var users = require('./routes/users');
 var apis = require('./routes/apis');
-var dashboard = require('./routes/dashboard')
+//var dashboard = require('./routes/dashboard')
 // And use the routes in the app
-app.use('/', routes);
-app.use('/users', users);
+//app.use('/', routes);
+//app.use('/users', users);
 app.use('/api', apis);
-app.use('/dashboard', dashboard);
+//app.use('/dashboard', dashboard);
 // Routes files needed
+
+// Main route to catch the angular routes
+app.get('/webapp/*', function(req, res) {
+    res.sendfile('./public/views/index.html'); // only index.html is served
+});
+// Redirect to webapp
+app.get('/', function(req, res) {
+    res.redirect(301, '/webapp/');
+});
+
 
 
 // Prepare passport
 app.use(passport.initialize());
 
+/**
+ * Error handlers
+ */
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -51,7 +63,6 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
