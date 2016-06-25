@@ -8,7 +8,7 @@ if (process.env.OPENSHIFT_APP_NAME) {
     console.log("OPENSHIFT_MONGODB_DB_PASSWORD " + process.env.OPENSHIFT_MONGODB_DB_PASSWORD);
     console.log("OPENSHIFT_MONGODB_DB_URL " + process.env.OPENSHIFT_MONGODB_DB_URL);
     console.log("OPENSHIFT_MONGODB_DB_LOG_DIR " + process.env.OPENSHIFT_MONGODB_DB_LOG_DIR);
-    exports.database = 'mongodb://$OPENSHIFT_MONGODB_DB_URL/mylastip';
+    exports.database = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_URL;
 } else {
     exports.database = 'mongodb://127.0.0.1:27017/';
 }
