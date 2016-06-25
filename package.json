@@ -13,14 +13,11 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
-    "jquery": "latest",
     "passport": "latest",
     "passport-jwt": "latest",
     "mongoose": "latest",
     "bcrypt": "latest",
     "jwt-simple": "latest",
-    "jsonwebtoken": "latest",
-    "angular": "latest",
-    "angular-cookies": "latest"
+    "jsonwebtoken": "latest"
   }
 }

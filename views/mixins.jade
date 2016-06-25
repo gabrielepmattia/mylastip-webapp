@@ -25,24 +25,24 @@ mixin nav(style)
         block
 
 // Input
-mixin inputform(name, type, placeholder, glyph)
+mixin inputform(name, type, placeholder, glyph, ngmodel)
     div.form-group.border
         div.input-group
             span(id="#basic-addon1").input-group-addon #{glyph}
-            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control", ng-model=ngmodel)
             block
 
-mixin inputFormGlyph(name, type, placeholder, glyph, text)
+mixin inputFormGlyph(name, type, placeholder, glyph, text, ngmodel)
     div.form-group.border
         div.input-group
             span(id="#basic-addon1").input-group-addon
                 span(class="glyphicon glyphicon-" + glyph, aria-hidden="true") #{text}
-            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control")
+            input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control", ng-model=ngmodel)
             block
-
+// Buttons
 mixin buttonGroup(label)
     div(role="group", aria-label=label).btn-group
         block
-mixin buttonGroupElement(label)
-    button(type="button").btn.btn-default #{label}
+mixin buttonGroupElement(label, ngclick)
+    button(type="button", ng-click=ngclick).btn.btn-default #{label}
     block

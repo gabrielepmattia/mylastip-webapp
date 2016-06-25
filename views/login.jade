@@ -12,22 +12,11 @@ block append scripts
 block content
     #page
         h1 Login
-            form(method="post", action="/api/signup").inputform
-                +inputFormGlyph("name","text", "Username", "user", "")
-                +inputFormGlyph("password","password", "Password", "console", "")
-                input(type="submit")
+        div(ng-controller="UserLogin").inputform
+            +inputFormGlyph("name","text", "Username", "user", "", "user.username")
+            +inputFormGlyph("password","password", "Password", "console", "", "user.password")
 
             +buttonGroup("").center
-                +buttonGroupElement("Login")
+                +buttonGroupElement("Login", "submit()")
                 +buttonGroupElement("Register")
-
-
-        <div ng-controller="UserLogin">
-        <span></span>
-
-        <input ng-model="user.username" type="text" name="user" placeholder="Username" />
-        <input ng-model="user.password" type="password" name="password" placeholder="Password" />
-        <button ng-click="submit()" value="Login">Login</button>
-        <p> {{message}} </p>
-
-        </div>
+            p {{message}}

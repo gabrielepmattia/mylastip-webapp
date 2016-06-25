@@ -6,7 +6,7 @@
 
 var app = require('../app');
 var debug_webserver = require('debug')('MyLastIPWebApp:webserver');
-var debug_daemon = require('debug')('MyLastIPWebApp:daemonserver');
+//var debug_daemon = require('debug')('MyLastIPWebApp:daemonserver');
 var http = require('http');
 var net = require('net');
 
@@ -54,17 +54,16 @@ dserver.on('error', function (error) {
             throw error;
     }
 });
+ dserver.listen(port_daemon, ipaddress);
  */
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 server.listen(port_webserver, ipaddress);
-//dserver.listen(port_daemon, ipaddress);
+
 server.on('error', onError);
 server.on('listening', onListening);
-//dserver.on('error', onError);
-//dserver.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.

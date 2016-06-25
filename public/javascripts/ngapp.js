@@ -1,7 +1,7 @@
 var mylastip = angular.module('mylastip', ['ngCookies']);
 
 mylastip.controller('UserLogin', function ($scope, $http, $window, $cookies) {
-    $scope.user = {username: 'john.doe', password: 'foobar'};
+    $scope.user = {username: 'jane.doe', password: 'foobar'};
     $scope.message = '';
     $scope.submit = function () {
         $scope.message = 'Loading..';
