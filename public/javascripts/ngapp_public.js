@@ -1,10 +1,9 @@
-//var mylastip = angular.module('mylastip', ['ngCookies']);
 var mylastip = angular.module('mylastip', [
     'ngCookies',
     'ngRoute',
     'MainCtrl',
     'UserLoginCrtl',
-    'ngAppRoutes'
+    'publicRoutes'
 ]);
 /*
 mylastip.controller('UserLoginCrtl', function ($scope, $http, $window, $cookies) {

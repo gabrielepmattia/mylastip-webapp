@@ -13,10 +13,9 @@ var User = require('./models/user');
 // Instantiate the app
 var app = express();
 
-
 // view engine setup -- no longer needed with angular
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,24 +29,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
 var apis = require('./routes/apis');
-//var dashboard = require('./routes/dashboard')
+var members = require('./routes/members');
 // And use the routes in the app
 //app.use('/', routes);
 //app.use('/users', users);
 app.use('/api', apis);
-//app.use('/dashboard', dashboard);
-// Routes files needed
+app.use('/members', members);
 
 // Main route to catch the angular routes
-app.get('/webapp/*', function(req, res) {
+app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html'); // only index.html is served
 });
-// Redirect to webapp
-app.get('/', function(req, res) {
-    res.redirect(301, '/webapp/');
+
+/*
+app.get('*', passport.authenticate('jwt', {session: false}), function (req, res) {
+    res.sendfile('./public/views/index.html');
 });
-
-
+*/
 
 // Prepare passport
 app.use(passport.initialize());

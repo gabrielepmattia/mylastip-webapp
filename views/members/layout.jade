@@ -1,12 +1,12 @@
 doctype html
-html(ng-app="mylastip")
+html(ng-app="mylastip_members")
     head
         title=title
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         meta(name='description', content='Know your ip everywhere for free with mylastip! Just register!')
-        base(href="/")
+        base(href="/members/")
         // Styles
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Ubuntu:400,300')
         link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.min.css')
@@ -20,10 +20,9 @@ html(ng-app="mylastip")
         script(src='/libs/angular-cookies/angular-cookies.min.js')
         script(src='/libs/angular-route/angular-route.min.js')
         // ngApp
-        script(src='/javascripts/controllers/MainCrtl.js')
-        script(src='/javascripts/controllers/UserLoginCrtl.js')
-        script(src='/javascripts/routes/publicRoutes.js')
-        script(src='/javascripts/ngapp_public.js')
+        script(src='/javascripts/controllers/members/MainCrtl.js')
+        script(src='/javascripts/routes/membersRoutes.js')
+        script(src='/javascripts/ngapp_members.js')
 
     body
         block scripts
@@ -31,23 +30,21 @@ html(ng-app="mylastip")
 
         block header
             #header
-                h1.fronttitle="MyLastIP"
-
+                h1.fronttitle MyLastIP
+                    span.beside-titles .members area
         block content
-            #page
+
 
         block footer
             #footer
                 ul.nav.nav-pills(style="display:inline-block")
                     li.nav-item
-                        a.nav-link(href="/") Home
+                        a.nav-link(href="/members") My Dashboard
                     li.nav-item
-                        a.nav-link(href="/login") Login
+                        a.nav-link(href="/members/logout") Logout
                     li.nav-item
                         a.nav-link(href="/download") Download
                     li.nav-item
-                        a.nav-link(href="/register") Register
-                    li.nav-item
-                        a.nav-link(href="/members/") Members
+                        a.nav-link(href="/register") Instructions
 
                 p.copyright myLastIP, everything by @gabry3795. Default timezone is UTC everywhere

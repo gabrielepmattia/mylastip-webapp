@@ -1,5 +1,4 @@
-// public/js/appRoutes.js
-angular.module('ngAppRoutes', []).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+angular.module('publicRoutes', []).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
         // home page
         .when('/', {

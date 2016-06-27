@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="$FileName$ --out $ProjectFileDir$/public/views" />
+      <option name="arguments" value="$FileName$ --out $ProjectFileDir$/public/$FileDirRelativeToProjectRoot$" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" value="Compiles .jade files into .html files" />
       <option name="exitCodeBehavior" value="ERROR" />
