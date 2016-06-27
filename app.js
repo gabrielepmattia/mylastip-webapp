@@ -34,7 +34,7 @@ var members = require('./routes/members');
 //app.use('/', routes);
 //app.use('/users', users);
 app.use('/api', apis);
-app.use('/members', members);
+app.use('/members/*', members);
 
 // Main route to catch the angular routes
 app.get('*', function(req, res) {

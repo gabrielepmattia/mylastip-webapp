@@ -46,3 +46,16 @@ mixin buttonGroup(label)
 mixin buttonGroupElement(label, ngclick)
     button(type="button", ng-click=ngclick).btn.btn-default #{label}
     block
+//mixin button(label, style, size)
+    - var size = (typeof size === 'undefined') ? "" : size
+    case size
+        when ""
+            - size = ""
+        when "large"
+            - size = "btn-lg"
+        when "small"
+            - size = "btn-sm"
+        when "mini"
+            - size = "btn-xs"
+    button(type="button", class="btn btn-" + style + " " + size) #{label}
+    block

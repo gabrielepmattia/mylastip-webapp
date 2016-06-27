@@ -8,6 +8,14 @@ var DeviceSchema = new Schema({
         type: User,
         required: true
     },
+    ordering_number: {
+        type: number,
+        required: true
+    },
+    ID: {
+        type: number,
+        required: true
+    },
     name: {
         type: String,
         required: true,
@@ -41,7 +49,7 @@ DeviceSchema.pre('save', function (next) {
     if (this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) return next(err);
-            bcrypt.hash(this.name + this.owner.name, salt, function (err, hash) {
+            bcrypt.hash(this.name + this.owner.name + this.ID, salt, function (err, hash) {
                 if (err) return next(err);
                 this.key = hash;
                 next();

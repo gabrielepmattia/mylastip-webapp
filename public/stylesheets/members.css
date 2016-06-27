@@ -1,0 +1,17 @@
+a {
+    /* color:#ff9000; */
+    color:#008de7;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: #009bff;
+    /* border-bottom:1px dotted; */
+    /* text-decoration:underline; */
+
+}
+
+#page {
+    border-top: 5px solid #008de7; /* Beautiful? */
+}

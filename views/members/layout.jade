@@ -12,6 +12,7 @@ html(ng-app="mylastip_members")
         link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap-theme.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/members.css')
         // Libs
         script(src='/libs/jquery/dist/jquery.min.js')
         script(src='/libs/bootstrap/dist/js/bootstrap.min.js')
@@ -21,6 +22,7 @@ html(ng-app="mylastip_members")
         script(src='/libs/angular-route/angular-route.min.js')
         // ngApp
         script(src='/javascripts/controllers/members/MainCrtl.js')
+        script(src='/javascripts/controllers/members/DeviceCrtl.js')
         script(src='/javascripts/routes/membersRoutes.js')
         script(src='/javascripts/ngapp_members.js')
 
@@ -41,7 +43,7 @@ html(ng-app="mylastip_members")
                     li.nav-item
                         a.nav-link(href="/members") My Dashboard
                     li.nav-item
-                        a.nav-link(href="/members/logout") Logout
+                        a.nav-link(href="/members/device/32") Device
                     li.nav-item
                         a.nav-link(href="/download") Download
                     li.nav-item

@@ -1,1 +1,12 @@
-<p>Welcome to the members area!</p>
+<!-- Input--><!-- Buttons--><!--mixin button(label, style, size)- var size = (typeof size === 'undefined') ? "" : size
+case size
+    when ""
+        - size = ""
+    when "large"
+        - size = "btn-lg"
+    when "small"
+        - size = "btn-sm"
+    when "mini"
+        - size = "btn-xs"
+button(type="button", class="btn btn-" + style + " " + size) 
+block--><p>Welcome to the members area! Here's a list of your registered devices:</p><div class="table-responsive"><table class="table table-hover"><thead><tr><th>#</th><th>ID</th><th>Name</th><th>Last IP</th><th>Last check-in</th></tr></thead><tbody><tr><td>1</td><td>#4541</td><td>My device</td><td>132.235.25.32</td><td>5 minutes ago</td></tr><tr><td>1</td><td>#4541</td><td>My device</td><td>132.235.25.32</td><td>5 minutes ago</td></tr><tr><td>1</td><td>#4541</td><td>My device</td><td>132.235.25.32</td><td>5 minutes ago</td></tr><tr><td>1</td><td>#4541</td><td>My device</td><td>132.235.25.32</td><td>5 minutes ago</td></tr><tr><td>1</td><td>#4541</td><td>My device</td><td>132.235.25.32</td><td>5 minutes ago</td></tr></tbody></table></div><div class="right"><a href="#" class="btn btn-primary btn-sm">Add device</a></div>

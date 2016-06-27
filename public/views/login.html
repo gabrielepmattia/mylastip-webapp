@@ -1,4 +1,15 @@
-<!-- Input--><!-- Buttons--><script type="text/javascript">$(document).ready(function () {
+<!-- Input--><!-- Buttons--><!--mixin button(label, style, size)- var size = (typeof size === 'undefined') ? "" : size
+case size
+    when ""
+        - size = ""
+    when "large"
+        - size = "btn-lg"
+    when "small"
+        - size = "btn-sm"
+    when "mini"
+        - size = "btn-xs"
+button(type="button", class="btn btn-" + style + " " + size) 
+block--><script type="text/javascript">$(document).ready(function () {
     //$('#page').fadeOut(1000, function () {
 
     //});

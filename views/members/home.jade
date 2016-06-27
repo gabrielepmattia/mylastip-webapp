@@ -1,1 +1,45 @@
-p Welcome to the members area!
+include ../mixins
+
+p Welcome to the members area! Here's a list of your registered devices:
+div.table-responsive
+    table.table.table-hover
+        thead
+            tr
+                th #
+                th ID
+                th Name
+                th Last IP
+                th Last check-in
+        tbody
+            tr
+                td 1
+                td #4541
+                td My device
+                td 132.235.25.32
+                td 5 minutes ago
+            tr
+                td 1
+                td #4541
+                td My device
+                td 132.235.25.32
+                td 5 minutes ago
+            tr
+                td 1
+                td #4541
+                td My device
+                td 132.235.25.32
+                td 5 minutes ago
+            tr
+                td 1
+                td #4541
+                td My device
+                td 132.235.25.32
+                td 5 minutes ago
+            tr
+                td 1
+                td #4541
+                td My device
+                td 132.235.25.32
+                td 5 minutes ago
+div.right
+    +button("primary", undefined ,"small") Add device
