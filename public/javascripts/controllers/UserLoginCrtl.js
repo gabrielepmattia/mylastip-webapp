@@ -19,7 +19,7 @@ angular.module('UserLoginCrtl', []).controller('UserLoginController', function (
                     $cookies.put("token", data.token, {'expires': expireDate});
                     // Update the message
                     $scope.message = 'Welcome!';
-                    $window.location = "/members";
+                    $window.location = "/members/";
                 }
             })
             .error(function (data, status, headers, config) {
