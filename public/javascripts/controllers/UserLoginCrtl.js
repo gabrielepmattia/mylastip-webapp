@@ -1,5 +1,5 @@
 angular.module('UserLoginCrtl', []).controller('UserLoginController', function ($scope, $http, $window, $cookies) {
-    $scope.user = {username: 'jane.doe', password: 'foobar'};
+    $scope.user = {username: 'jane.doe', password: 'jane.doe'};
     $scope.message = '';
     $scope.submit = function () {
         $scope.message = 'Loading..';

@@ -59,5 +59,9 @@ router.post('/authenticate', function (req, res) {
     });
 });
 
+router.post('/check-in', function (req, res) {
+
+});
+
 
 module.exports = router;
