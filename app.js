@@ -36,6 +36,7 @@ var members = require('./routes/members');
 app.use('/api', apis);
 app.use('/members/*', members);
 
+
 // Main route to catch the angular routes
 app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html'); // only index.html is served
@@ -43,9 +44,9 @@ app.get('*', function(req, res) {
 
 /*
 app.get('*', passport.authenticate('jwt', {session: false}), function (req, res) {
-    res.sendfile('./public/views/index.html');
+    res.sendfile('./public/views/members/index.html');
 });
-*/
+ */
 
 // Prepare passport
 app.use(passport.initialize());

@@ -9,26 +9,27 @@ var debug_webserver = require('debug')('MyLastIPWebApp:webserver');
 var http = require('http');
 var net = require('net');
 
-/**
- * Get port from environment and store in Express.
- */
+var server;
+// Check the openshift environment
+if (process.env.OPENSHIFT_APP_NAME) {
+    // Get port from environment and store in Express.
+    var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+    var port_webserver = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+    app.set('port', port_webserver);
+    // Create HTTP server
+    server = http.createServer(app);
+    // Listen on provided port, on all network interfaces.
+    server.listen(port_webserver, ipaddress);
+} else {
+    // Get port from environment and store in Express.
+    var port = normalizePort(process.env.PORT || '8080');
+    app.set('port', port);
+    // Create HTTP server.
+    server = http.createServer(app);
+    // Listen on provided port, on all network interfaces.
+    server.listen(port);
+}
 
-//var port = normalizePort(process.env.PORT || '3000');
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var port_webserver = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-app.set('port', port_webserver);
-
-/**
- * Create HTTP server and the daemon server
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port_webserver, ipaddress);
 server.on('error', onError);
 server.on('listening', onListening);
 

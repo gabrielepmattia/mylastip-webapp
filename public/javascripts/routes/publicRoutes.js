@@ -11,7 +11,8 @@ angular.module('publicRoutes', []).config(['$routeProvider', '$locationProvider'
             controller: 'UserLoginController'
         })
         .when('/members', {
-            template:'<META http-equiv="refresh" content="1;URL=/members">Authenticating in 1 second...'
+            redirectTo: '/members'
+            //template:'<META http-equiv="refresh" content="1;URL=/members">Authenticating in 1 second...'
             //templateUrl: '/views/login.html',
             //controller: 'UserLoginController'
         });
