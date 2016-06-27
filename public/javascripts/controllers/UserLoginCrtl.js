@@ -18,7 +18,8 @@ angular.module('UserLoginCrtl', []).controller('UserLoginController', function (
                     expireDate.setDate(expireDate.getDate() + 1); // 1 day for now
                     $cookies.put("token", data.token, {'expires': expireDate});
                     // Update the message
-                    $scope.message = 'Welcome';
+                    $scope.message = 'Welcome!';
+                    $window.location = "/members";
                 }
             })
             .error(function (data, status, headers, config) {
