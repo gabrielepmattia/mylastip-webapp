@@ -2,11 +2,13 @@ include mixins
 
 h1 Signup
 form.form-horizontal
-    +formTextView("email", "Email", "youremail@example.com", "email")
-    +formTextView("username", "Username", "my.awesomeusername24", "text")
-    +formTextView("name", "Name", "Your Name", "text")
-    +formTextView("password", "Password", "", "password")
-    +formTextView("repeat_password", "Repeat Password", "", "password")
+    +formTextView("email", "Email", "youremail@example.com", "email", "user.email")
+    +formTextView("username", "Username", "my.awesomeusername24", "text", "user.username")
+    +formTextView("name", "Name", "Your Name", "text", "user.name")
+    +formTextView("password", "Password", "", "password", "user.password")
+    +formTextView("repeat", "Repeat Password", "", "password", "repeat")
     //+formCheckBoxContainer("Test")
         +formCheckBox("Remember me")
-    +formButton("Sign up!")
+    +formButton("Sign up!", "submit()")
+    //+alert("success", "alert") {{message}}
+    div.center {{message}}

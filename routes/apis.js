@@ -13,19 +13,21 @@ mongoose.connect(config.database);
 
 // Create a new user account (POST http://localhost:8080/api/signup)
 router.post('/signup', function (req, res) {
-    if (!req.body.name || !req.body.password) {
-        res.json({success: false, msg: 'Please pass name and password.'});
+    if (!req.body.username || !req.body.password || !req.body.email) {
+        res.json({success: false, msg: 'Some required fields are missing. :('});
     } else {
         var newUser = new User({
+            email: req.body.email,
+            username: req.body.username,
             name: req.body.name,
             password: req.body.password
         });
         // save the user
         newUser.save(function (err) {
             if (err) {
-                return res.json({success: false, msg: 'Username already exists.'});
+                return res.json({success: false, msg: 'Username or email are already registered.'});
             }
-            res.json({success: true, msg: 'Successful created new user.'});
+            res.json({success: true, msg: 'Account has been created.'});
         });
     }
 });

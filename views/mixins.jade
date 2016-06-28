@@ -48,11 +48,11 @@ mixin buttonGroupElement(label, ngclick)
     block
 
 // - form
-mixin formTextView(id, label, placeholder, type)
+mixin formTextView(id, label, placeholder, type, ngmodel)
     div.form-group
         label(for=id).control-label.col-xs-2 #{label}
         div.col-xs-10
-            input(type=type, id=id, placeholder=placeholder).form-control
+            input(type=type, id=id, placeholder=placeholder, ng-model=ngmodel).form-control
     block
 
 mixin formCheckBoxContainer(label)
@@ -67,8 +67,12 @@ mixin formCheckBox(label)
                 <input type="checkbox"> #{label}
     block
 
-mixin formButton(label)
+mixin formButton(label, ngclick)
     div.form-group
         div.col-sm-offset-2.col-sm-10
-            button(type="submit" class="btn btn-primary") #{label}
+            button(class="btn btn-primary", ng-click=ngclick) #{label}
     block
+// - Alerts
+mixin alert(type, ngmodel)
+    div(class="alert alert-" + type, style="display:none", ng-model=ngmodel, role="alert")
+        block
