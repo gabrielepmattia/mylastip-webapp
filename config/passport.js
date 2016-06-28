@@ -2,6 +2,7 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var User = require('../models/user');
 var config = require('../config/common');
+var secret = require('../config/secret');
 
 module.exports = function (passport) {
     var opts = {};
@@ -14,10 +15,10 @@ module.exports = function (passport) {
         }
         return token;
     };
-    opts.secretOrKey = config.secret;
+    opts.secretOrKey = secret.secret;
     // Set the strategy 
     passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-        User.findOne({id: jwt_payload.id}, function (err, user) {
+        User.findOne({_id: jwt_payload.id}, function (err, user) {
             if (err) {
                 return done(err, false);
             }

@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var config = require('../config/common');
+var secret = require('../config/secret');
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 // Pass passport for configuration
@@ -35,7 +36,7 @@ router.post('/signup', function (req, res) {
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 router.post('/authenticate', function (req, res) {
     User.findOne({
-        name: req.body.username
+        username: req.body.username
     }, function (err, user) {
         if (err) throw err;
 
@@ -47,9 +48,13 @@ router.post('/authenticate', function (req, res) {
                 if (isMatch && !err) {
                     // if user is found and password is right create a token that will contain the entire
                     // user's record with id, username, password, ecc..
-                    var token = jwt.sign(user, config.secret, {
+                    var token = jwt.sign({
+                        id: user.id,
+                        username: user.username
+                    }, secret.secret, {
                         expiresIn: 10080 // in seconds
                     });
+                    console.log(user);
                     // return the information including token as JSON
                     res.json({success: true, token: token});
                     //res.render('authenticate', {token: token});

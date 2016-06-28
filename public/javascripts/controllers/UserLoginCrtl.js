@@ -1,4 +1,8 @@
 angular.module('UserLoginCrtl', []).controller('UserLoginController', function ($scope, $http, $window, $cookies) {
+    if($cookies.get('token')){
+        $window.sessionStorage.token = $cookies.get('token');
+        $window.location = "/members/";
+    }
     $scope.user = {username: 'jane.doe', password: 'jane.doe'};
     $scope.message = '';
     $scope.submit = function () {
@@ -8,7 +12,7 @@ angular.module('UserLoginCrtl', []).controller('UserLoginController', function (
             .success(function (data, status, headers, config) {
                 // If response of authentication is positive..
                 if (!data.success) {
-                    $scope.message = 'Name or password are invalid.';
+                    $scope.message = data.msg;
                 }
                 else {
                     // Leave the token even in the session storage

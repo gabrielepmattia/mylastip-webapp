@@ -1,4 +1,8 @@
 angular.module('UserSignupCrtl', []).controller('UserSignupController', function ($scope, $http, $window, $cookies) {
+    if($cookies.get('token')){
+        $window.sessionStorage.token = $cookies.get('token');
+        $window.location = "/members/";
+    }
     $scope.message = '';
     $scope.submit = function () {
         $scope.message = 'Loading..';

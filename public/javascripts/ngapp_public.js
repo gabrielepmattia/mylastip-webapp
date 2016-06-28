@@ -46,8 +46,7 @@ mylastip.controller('UserLoginCrtl', function ($scope, $http, $window, $cookies)
  */
 mylastip.factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
-        "request": function (config) {
-
+        request: function (config) {
             config.headers = config.headers || {};
             if ($window.sessionStorage.token) {
                 config.headers.Authorization = $window.sessionStorage.token;

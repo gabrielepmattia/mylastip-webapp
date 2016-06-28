@@ -1,0 +1,1 @@
+exports.secret = 'fmQkDIu7vKqzc1TmcKLo3JVqPDDexUBB3NKgZqRl1XGTU1RGZK9fPUDzn68wuQJxrMPIRdSJVw2ehqeM';

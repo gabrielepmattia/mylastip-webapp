@@ -1,5 +1,3 @@
-exports.secret = 'zwehQ5v4Kc5djIoQrD5B4QX7cYWNNpsXhdM5qfX5g1C9ftdX29oZaWJI0IDzgAzNWcXcU6UQB8LALpyq';
-
 if (process.env.OPENSHIFT_APP_NAME) {
     console.log("OpenShift platform detected.");
     console.log("OPENSHIFT_MONGODB_DB_HOST " + process.env.OPENSHIFT_MONGODB_DB_HOST);
