@@ -22,6 +22,7 @@ html(ng-app="mylastip")
         // ngApp
         script(src='/javascripts/controllers/MainCrtl.js')
         script(src='/javascripts/controllers/UserLoginCrtl.js')
+        script(src='/javascripts/controllers/UserSignupCrtl.js')
         script(src='/javascripts/routes/publicRoutes.js')
         script(src='/javascripts/ngapp_public.js')
 
@@ -44,9 +45,9 @@ html(ng-app="mylastip")
                     li.nav-item
                         a.nav-link(href="/login") Login
                     li.nav-item
-                        a.nav-link(href="/download") Download
+                            a.nav-link(href="/signup") Sign up
                     li.nav-item
-                        a.nav-link(href="/register") Register
+                        a.nav-link(href="/download") Download
                     li.nav-item
                         a.nav-link(href="/members/", target="_self") Members
 

@@ -3,6 +3,7 @@ var mylastip = angular.module('mylastip', [
     'ngRoute',
     'MainCtrl',
     'UserLoginCrtl',
+    'UserSignupCrtl',
     'publicRoutes'
 ]);
 /*

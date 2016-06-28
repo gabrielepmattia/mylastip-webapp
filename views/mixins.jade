@@ -39,23 +39,36 @@ mixin inputFormGlyph(name, type, placeholder, glyph, text, ngmodel)
                 span(class="glyphicon glyphicon-" + glyph, aria-hidden="true") #{text}
             input(name=name, type=type, placeholder=placeholder, aria-describedby="basic-addon1", class="form-control", ng-model=ngmodel)
             block
-// Buttons
+// - Buttons
 mixin buttonGroup(label)
     div(role="group", aria-label=label).btn-group
         block
 mixin buttonGroupElement(label, ngclick)
     button(type="button", ng-click=ngclick).btn.btn-default #{label}
     block
-//mixin button(label, style, size)
-    - var size = (typeof size === 'undefined') ? "" : size
-    case size
-        when ""
-            - size = ""
-        when "large"
-            - size = "btn-lg"
-        when "small"
-            - size = "btn-sm"
-        when "mini"
-            - size = "btn-xs"
-    button(type="button", class="btn btn-" + style + " " + size) #{label}
+
+// - form
+mixin formTextView(id, label, placeholder, type)
+    div.form-group
+        label(for=id).control-label.col-xs-2 #{label}
+        div.col-xs-10
+            input(type=type, id=id, placeholder=placeholder).form-control
+    block
+
+mixin formCheckBoxContainer(label)
+    div.form-group
+        label.control-label.col-xs-2 #{label}
+        block
+
+mixin formCheckBox(label)
+    div.col-sm-10
+        div.checkbox
+            label
+                <input type="checkbox"> #{label}
+    block
+
+mixin formButton(label)
+    div.form-group
+        div.col-sm-offset-2.col-sm-10
+            button(type="submit" class="btn btn-primary") #{label}
     block

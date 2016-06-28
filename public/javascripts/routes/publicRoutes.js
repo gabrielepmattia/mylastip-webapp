@@ -5,10 +5,13 @@ angular.module('publicRoutes', []).config(['$routeProvider', '$locationProvider'
             templateUrl: '/views/home.html',
             controller: 'MainController'
         })
-
         .when('/login', {
             templateUrl: '/views/login.html',
             controller: 'UserLoginController'
+        })
+        .when('/signup', {
+            templateUrl: '/views/signup.html',
+            controller: 'UserSignupController'
         })
         .when('/members', {
             redirectTo: '/members'
