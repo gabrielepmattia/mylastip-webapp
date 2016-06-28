@@ -50,7 +50,7 @@ mylastip.factory('authInterceptor', function ($rootScope, $q, $window) {
             config.headers = config.headers || {};
             if ($window.sessionStorage.token) {
                 config.headers.Authorization = $window.sessionStorage.token;
-            }
+            } 
             return config;
         },
         response: function (response) {

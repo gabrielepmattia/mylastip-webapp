@@ -66,6 +66,22 @@ router.post('/authenticate', function (req, res) {
     });
 });
 
+/**
+ * Members Area apis
+ */
+router.post('/get_user_devices', function (req, res) {
+
+});
+
+router.post('/add_user_device', function (req, res) {
+
+});
+
+
+/**
+ * Raspberry apis
+ */
+
 router.post('/check-in', function (req, res) {
 
 });

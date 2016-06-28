@@ -1,8 +1,13 @@
 angular.module('UserSignupCrtl', []).controller('UserSignupController', function ($scope, $http, $window, $cookies) {
+    /**
+     * Check if cookie is present, if yes redirect immediately to /members/ and passport
+     * will verify if it's true or fake
+     */
     if($cookies.get('token')){
         $window.sessionStorage.token = $cookies.get('token');
         $window.location = "/members/";
     }
+    
     $scope.message = '';
     $scope.submit = function () {
         $scope.message = 'Loading..';
