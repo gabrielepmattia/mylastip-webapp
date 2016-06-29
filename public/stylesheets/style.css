@@ -66,7 +66,7 @@ p {
     margin-top: -10px;
 }
 
-.beside-titles{
+.beside-titles {
     font-size: medium;
     font-weight: 300;
 }
@@ -118,15 +118,18 @@ p {
 /* Display page */
 .display_ip {
     padding: 15px 0 15px 0;
-    font-size: large;
     font-weight: bold;
+}
+
+#ip_container {
+    font-size: x-large;
 }
 
 #ip_container img#ip_image {
     width: 64px;
     height: 64px;
     vertical-align: middle;
-    padding-right: 15px;
+    margin-right: 15px;
 
 }
 
@@ -299,11 +302,9 @@ p {
 
 }
 
-.beside-loginform{
+.beside-loginform {
     max-width: 300px;
 }
-
-
 
 /* General styles */
 .center {
@@ -322,13 +323,18 @@ p {
     padding-top: 4%;
 }
 
-.float-left{
+.float-left {
     float: left;
 }
-.float-right{
+
+.float-right {
     float: right;
 }
 
-.width100{
+.width100 {
     width: 100%;
+}
+
+.no-margin {
+    margin: 0;
 }

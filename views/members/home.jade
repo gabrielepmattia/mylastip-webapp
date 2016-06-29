@@ -9,13 +9,15 @@ div.table-responsive
                 th Name
                 th Last IP
                 th Last check-in
+                th Actions
         tbody
-
             tr(ng-repeat="x in devices")
                 td {{x.ordering_number}}
                 td {{x.name}}
                 td {{x.data[0].ip}}
                 td {{x.data[0].timestamp}}
+                td
+                    a(href="/members/device/{{x._id}}") View
 
 div.center {{message}}
 

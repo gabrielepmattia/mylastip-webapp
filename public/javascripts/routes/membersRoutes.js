@@ -5,7 +5,7 @@ angular.module('membersRoutes', []).config(['$routeProvider', '$locationProvider
             templateUrl: '/views/members/home.html',
             controller: 'MainController'
         })
-        .when('/device/:ID', {
+        .when('/device/:id', {
             templateUrl: '/views/members/device.html',
             controller: 'DeviceController'
         });

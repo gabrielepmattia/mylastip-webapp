@@ -89,3 +89,16 @@ mixin inlineFormButton(label, ngclick)
 mixin alert(type, ngmodel)
     div(class="alert alert-" + type, style="display:none", ng-model=ngmodel, role="alert")
         block
+
+// -- Panels
+mixin panel(style)
+    div(class=['panel', 'panel-' + style])
+
+mixin panelHeader(label)
+    div.panel-heading
+        h3.panel-title #{label}
+    block
+
+mixin panelFooter(label)
+    div.panel-footer #{label}
+    block

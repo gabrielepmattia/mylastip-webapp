@@ -26,6 +26,10 @@ var UserSchema = new Schema({
     registered_on: {
         type: Number,
         required: true
+    },
+    timezone: {
+        type: Number,
+        required: true
     }
 });
 

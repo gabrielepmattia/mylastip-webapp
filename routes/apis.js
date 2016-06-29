@@ -76,7 +76,6 @@ router.post('/get_user_devices', passport.authenticate('jwt', {
     failureRedirect: "/login"
 }), function (req, res) {
     Device.find({owner_id: req.user.id }, function (err, devices) {
-        console.log(devices.length);
         if (err) throw err;
         if (devices.length == 0){
             res.json({success: false, msg: "No device for current user!"});
@@ -114,6 +113,22 @@ router.post('/add_user_device', passport.authenticate('jwt', {
                 if (err) return res.json({success: false, msg: err.toString()});
                 else res.json({success: true, msg: 'Device ' + newDevice.name + ' has been created. Key is ' + newDevice.key});
             });
+        });
+    }
+});
+
+router.post('/get_device_info', passport.authenticate('jwt', {
+    session: false,
+    failureRedirect: "/login"
+}), function (req, res) {
+    if (!req.body.id) {
+        res.json({success: false, msg: "ID is required!"});
+    } else {
+        // Search for user devices
+        Device.findOne({_id: req.body.id}, function (err, device) {
+            if (err) throw err;
+            if(!device) res.json({success: false, msg: "No device."});
+            else res.json({success: true, device: device});
         });
     }
 });
