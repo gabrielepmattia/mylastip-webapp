@@ -1,5 +1,5 @@
 //- Button mixin
-mixin button(style, href, size)
+mixin button(style, href, size, ngclick)
     - var style = (typeof style === 'undefined') ? "default" : style
     - var href = (typeof href === 'undefined') ? "#" : href
     case size
@@ -10,7 +10,7 @@ mixin button(style, href, size)
         when "mini"
             - size = "btn-xs"
 
-    a( class=["btn", "btn-" + style, size], href=href )
+    a( class=["btn", "btn-" + style, size], href=href, ng-click=ngclick )
         block
 
 //- Alert mixin
@@ -55,6 +55,13 @@ mixin formTextView(id, label, placeholder, type, ngmodel)
             input(type=type, id=id, placeholder=placeholder, ng-model=ngmodel).form-control
     block
 
+mixin inlineFormTextView(id, label, placeholder, type, ngmodel)
+    div.form-group
+        label(for=id) #{label}
+        input(type=type, id=id, placeholder=placeholder, ng-model=ngmodel).form-control
+    block
+
+
 mixin formCheckBoxContainer(label)
     div.form-group
         label.control-label.col-xs-2 #{label}
@@ -72,6 +79,12 @@ mixin formButton(label, ngclick)
         div.col-sm-offset-2.col-sm-10
             button(class="btn btn-primary", ng-click=ngclick) #{label}
     block
+
+mixin inlineFormButton(label, ngclick)
+    div.form-group
+    button(class="btn btn-primary", ng-click=ngclick) #{label}
+    block
+
 // - Alerts
 mixin alert(type, ngmodel)
     div(class="alert alert-" + type, style="display:none", ng-model=ngmodel, role="alert")

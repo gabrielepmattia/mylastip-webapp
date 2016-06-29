@@ -6,40 +6,26 @@ div.table-responsive
         thead
             tr
                 th #
-                th ID
                 th Name
                 th Last IP
                 th Last check-in
         tbody
-            tr
-                td 1
-                td #4541
-                td My device
-                td 132.235.25.32
-                td 5 minutes ago
-            tr
-                td 1
-                td #4541
-                td My device
-                td 132.235.25.32
-                td 5 minutes ago
-            tr
-                td 1
-                td #4541
-                td My device
-                td 132.235.25.32
-                td 5 minutes ago
-            tr
-                td 1
-                td #4541
-                td My device
-                td 132.235.25.32
-                td 5 minutes ago
-            tr
-                td 1
-                td #4541
-                td My device
-                td 132.235.25.32
-                td 5 minutes ago
+
+            tr(ng-repeat="x in devices")
+                td {{x.ordering_number}}
+                td {{x.name}}
+                td {{x.data[0].ip}}
+                td {{x.data[0].timestamp}}
+
+div.center {{message}}
+
 div.right
-    +button("primary", undefined ,"small") Add device
+    +button("primary", undefined ,"small", "load()") Add device
+
+#add-form.add-form
+    h2 Add device
+    form.form-horizontal
+        +formTextView("new-device-name", "Name", "Input name here", "text", "new_device.name")
+        +formTextView("new-device-order", "Order number", "", "number", "new_device.order")
+        +formButton("Save Device", "saveDevice()")
+    div.center {{new_device_message}}

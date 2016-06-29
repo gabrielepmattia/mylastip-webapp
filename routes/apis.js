@@ -1,11 +1,13 @@
-var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('../config/common');
 var secret = require('../config/secret');
-var User = require('../models/user');
 var jwt = require('jsonwebtoken');
+// Models
+var User = require('../models/user');
+var Device = require('../models/device');
 // Pass passport for configuration
 require('../config/passport')(passport);
 
@@ -69,14 +71,52 @@ router.post('/authenticate', function (req, res) {
 /**
  * Members Area apis
  */
-router.post('/get_user_devices', function (req, res) {
-
+router.post('/get_user_devices', passport.authenticate('jwt', {
+    session: false,
+    failureRedirect: "/login"
+}), function (req, res) {
+    Device.find({owner_id: req.user.id }, function (err, devices) {
+        console.log(devices.length);
+        if (err) throw err;
+        if (devices.length == 0){
+            res.json({success: false, msg: "No device for current user!"});
+        } else {
+            devices.sort(function (a, b) {
+                return a.ordering_number - b.ordering_number
+            });
+            res.json({success: true, devices: devices});
+        }
+    });
 });
 
-router.post('/add_user_device', function (req, res) {
-
+router.post('/add_user_device', passport.authenticate('jwt', {
+    session: false,
+    failureRedirect: "/login"
+}), function (req, res) {
+    if (!req.body.name) {
+        res.json({success: false, msg: "Name is required!"});
+    } else {
+        // Search for user devices
+        Device.find({owner_id: req.user.id}, function (err, devices) {
+            if (err) throw err;
+            // Create new device obj
+            var device_order = req.body.order ? req.body.order : devices.length + 1;
+            var registered_on = Math.round(new Date().getTime() / 1000);
+            var newDevice = new Device({
+                owner_id: req.user.id,
+                ordering_number: device_order,
+                name: req.body.name,
+                key: req.body.name + "." + req.user.id + registered_on,
+                registered_on: registered_on
+            });
+            // Finally save it
+            newDevice.save(function (err) {
+                if (err) return res.json({success: false, msg: err.toString()});
+                else res.json({success: true, msg: 'Device ' + newDevice.name + ' has been created. Key is ' + newDevice.key});
+            });
+        });
+    }
 });
-
 
 /**
  * Raspberry apis

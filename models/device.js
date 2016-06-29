@@ -4,28 +4,28 @@ var bcrypt = require('bcrypt');
 var User = require('./user');
 
 var DeviceSchema = new Schema({
-    owner: {
-        type: User,
+    owner_id: {
+        type: String,
         required: true
     },
     ordering_number: {
-        type: number,
-        required: true
-    },
-    ID: {
-        type: number,
+        type: Number,
         required: true
     },
     name: {
         type: String,
         required: true,
+        unique: true,
         trim: true
     },
     key: {
         type: String,
-        required: true,
         unique: true,
         trim: true
+    },
+    registered_on: {
+        type: Number,
+        required: true
     },
     data: {
         type: [{
@@ -46,17 +46,22 @@ var DeviceSchema = new Schema({
 });
 
 DeviceSchema.pre('save', function (next) {
+    var device = this;
     if (this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) return next(err);
-            bcrypt.hash(this.name + this.owner.name + this.ID, salt, function (err, hash) {
+            bcrypt.hash(device.key, salt, function (err, hash) {
                 if (err) return next(err);
-                this.key = hash;
+                device.key = hash;
                 next();
             });
         });
     }
 });
+
+DeviceSchema.statics.compareElements = function compareElements(a, b) {
+    return a.ordering_number - b.ordering_number;
+};
 
 function dataLimit(val) {
     return val.length <= 25;
