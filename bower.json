@@ -8,6 +8,11 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-cookies": "latest",
-    "jquery-ui": "latest"
+    "jquery-ui": "latest",
+    "moment": "latest",
+    "angular-moment": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }

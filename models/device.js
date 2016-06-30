@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
-var User = require('./user');
 
 var DeviceSchema = new Schema({
     owner_id: {
@@ -27,21 +26,23 @@ var DeviceSchema = new Schema({
         type: Number,
         required: true
     },
-    data: {
-        type: [{
-            timestamp: {
-                type: Number,
-                required: true,
-                trim: true
-            },
-            ip: {
-                type: String,
-                required: true,
-                trim: true
-            }
-            // TODO add other array of machine info
-        }],
-        validate: [dataLimit, '{PATH} exceeds the limit of 25']
+    logdata: [{
+        timestamp: {
+            type: Number,
+            required: true,
+            trim: true
+        },
+        ip: {
+            type: String,
+            required: true,
+            trim: true
+        }
+        // TODO add other array of machine info
+    }],
+    // Poll delay time, to update at every check-in
+    delay: {
+        type: Number,
+        trim: true
     }
 });
 

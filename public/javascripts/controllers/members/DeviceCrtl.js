@@ -11,6 +11,7 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
                     var device = data.device;
                     $scope.device_name = device.name;
                     $scope.device_key = device.key;
+                    $scope.registered = device.registered_on; // TODO use angular-moment to convert
                     if (device.data.length == 0) $scope.message = "No log data for this device yet.";
                     else {
                         $scope.message = "";

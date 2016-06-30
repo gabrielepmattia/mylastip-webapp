@@ -18,6 +18,8 @@
     "mongoose": "latest",
     "bcrypt": "latest",
     "jwt-simple": "latest",
-    "jsonwebtoken": "latest"
+    "jsonwebtoken": "latest",
+    "moment": "latest",
+    "ipware": "latest"
   }
 }
