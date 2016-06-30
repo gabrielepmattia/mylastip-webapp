@@ -1,5 +1,5 @@
 #!/bin/sh
-npm install -g bower
 npm install
-bower install
+npm install bower
+./node_modules/.bin/bower install
 npm start -d
