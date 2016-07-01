@@ -17,7 +17,14 @@ angular.module('MainCtrl', []).controller('MainController', function ($scope, $h
     $scope.load();
 
     /**
-     * Add device logic
+     * Add device button
+     */
+    $scope.addDevice = function () {
+        $scope.add_form = {display: 'block'};
+    };
+
+    /**
+     * Save device logic
      */
     $scope.saveDevice = function () {
         $http
@@ -25,6 +32,7 @@ angular.module('MainCtrl', []).controller('MainController', function ($scope, $h
             .success(function (data, status, headers, config) {
                 if (!data.success) $scope.new_device_message = data.msg;
                 else $scope.new_device_message = data.msg;
+                $scope.add_form = {display: 'none'};
                 $scope.load();
             })
             .error(function (data, status, headers, config) {

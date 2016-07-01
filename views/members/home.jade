@@ -22,9 +22,9 @@ div.table-responsive
 div.center {{message}}
 
 div.right
-    +button("primary", undefined ,"small", "load()") Add device
+    +button("primary", undefined ,"small", "addDevice()") Add device
 
-#add-form.add-form
+#add-form(style="display: none", ng-style="add_form").add-form
     h2 Add device
     form.form-horizontal
         +formTextView("new-device-name", "Name", "Input name here", "text", "new_device.name")

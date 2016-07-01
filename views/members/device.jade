@@ -1,6 +1,6 @@
 include ../mixins
 
-#ip_container(ng-style="ip_container").center
+#ip_container(ng-style="ip_container", style="display:none").center
     p <b>{{device.name}}</b> last updated ip is
     div.display_ip
         img(src="/images/ip.png", id="ip_image", alt="ip")
@@ -30,3 +30,4 @@ div.panel.panel-default
     div.panel-body
         p.no-margin <b>Device Key</b>: {{device.key}}
         p.no-margin <b>Registered on</b>: {{registered}}
+    +panelFooter("Download here your settings.json to put in /etc/mylastipd")

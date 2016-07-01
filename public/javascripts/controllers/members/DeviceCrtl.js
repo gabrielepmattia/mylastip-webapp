@@ -2,7 +2,6 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
     //$scope.tagline = 'MyLastIPtestmain';
     var ID = $routeParams.id;
     var device;
-    $scope.message = "Device #" + ID;
     $scope.load = function () {
         $http
             .post('/api/get_device_info', {id: ID})
