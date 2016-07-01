@@ -1,11 +1,11 @@
 include ../mixins
 
-#ip_container.center
-    p <b>{{device_name}}</b> last updated ip is
+#ip_container(ng-style="ip_container").center
+    p <b>{{device.name}}</b> last updated ip is
     div.display_ip
         img(src="/images/ip.png", id="ip_image", alt="ip")
-        span 192.168.0.2
-    p updated on {{device_ip_last_updated}} {{timezone}}
+        span {{logdata[0].ip}}
+    p updated on {{logdata[0].timestamp}} {{timezone}}
     hr
 
 div.table-responsive
@@ -21,10 +21,12 @@ div.table-responsive
                 td {{x.ip}}
                 td {{x.timestamp}}
     div.center {{message}}
+div.right
+    +button("danger", undefined ,"small", 'clearLog()') Clear log
 br
 br
 div.panel.panel-default
     +panelHeader("Device info")
     div.panel-body
-        p.no-margin <b>Device Key</b>: {{device_key}}
+        p.no-margin <b>Device Key</b>: {{device.key}}
         p.no-margin <b>Registered on</b>: {{registered}}

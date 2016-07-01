@@ -78,6 +78,9 @@ router.post('/authenticate', function (req, res) {
 /**
  * Members Area apis
  */
+/**
+ * Get all user devices
+ */
 router.post('/get_user_devices', passport.authenticate('jwt', {
     session: false,
     failureRedirect: "/login"
@@ -94,6 +97,9 @@ router.post('/get_user_devices', passport.authenticate('jwt', {
     });
 });
 
+/**
+ * Add one device to user
+ */
 router.post('/add_user_device', passport.authenticate('jwt', {
     session: false,
     failureRedirect: "/login"
@@ -126,6 +132,9 @@ router.post('/add_user_device', passport.authenticate('jwt', {
     }
 });
 
+/**
+ * Get one device from database
+ */
 router.post('/get_device_info', passport.authenticate('jwt', {
     session: false,
     failureRedirect: "/login"
@@ -141,6 +150,41 @@ router.post('/get_device_info', passport.authenticate('jwt', {
         });
     }
 });
+
+/**
+ * Remove all logdata for device
+ */
+router.post('/remove_all_logdata', passport.authenticate('jwt', {
+    session: false,
+    failureRedirect: "/login"
+}), function (req, res) {
+    if (!req.body.id) {
+        res.json({success: false, msg: "ID is required!"});
+    } else {
+        // Search for user devices
+        Device.findOne({_id: req.body.id}, function (err, device) {
+            if (err) throw err;
+            if (!device) res.json({success: false, msg: "No device for this owner."});
+            else {
+                var conditions = {_id: req.body.id},
+                    update = {
+                        $pull: {
+                            logdata: {
+                                $exists: true
+                            }
+                        }
+                    },
+                    options = {};
+
+                Device.update(conditions, update, options, function (err) {
+                    if (err) return res.json({success: false, msg: err.toString()});
+                    return res.json({success: true, msg: "Cleared logdata for device!"});
+                });
+            }
+        });
+    }
+});
+
 
 /**
  * Raspberry apis
@@ -162,18 +206,19 @@ router.post('/check_in', function (req, res) {
 
     var conditions = {key: req.body.key},
         update = {
-            //delay: req.body.delay,
+            delay: req.body.delay,
             $push: {
                 logdata: {
-                    $each: [{timestamp: utils.unixTimestamp(), ip: req.connection.remoteAddress }]
+                    $each: [{timestamp: utils.unixTimestamp(), ip: req.connection.remoteAddress}],
+                    //$sort: -1
                 }
             }
         },
-        options = {safe: true, upsert: true, new : true};
+        options = {safe: true, upsert: true, new: true};
 
     Device.update(conditions, update, options, function (err) {
         if (err) return res.json({success: false, msg: err.toString()});
-        return res.json({success: true, msg: "OK"});
+        return res.json({success: true, msg: "Data saved to server!"});
     });
     /*
      Device.findOne({key: req.body.key}, function (err, device) {

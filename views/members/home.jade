@@ -14,8 +14,8 @@ div.table-responsive
             tr(ng-repeat="x in devices")
                 td {{x.ordering_number}}
                 td {{x.name}}
-                td {{x.data[0].ip}}
-                td {{x.data[0].timestamp}}
+                td {{x.logdata[0].ip}}
+                td {{x.logdata[0].timestamp}}
                 td
                     a(href="/members/device/{{x._id}}") View
 
