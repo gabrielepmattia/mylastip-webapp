@@ -203,10 +203,7 @@ router.post('/check_in', function (req, res) {
         success: false,
         msg: "Key has not been provided! Please add it to settings.json or download the setting file from the website"
     });
-
-    // Check data given
-    if(req.body.delay < 60) req.body.delay = 60;
-
+    
     var conditions = {key: req.body.key},
         update = {
             delay: req.body.delay,
