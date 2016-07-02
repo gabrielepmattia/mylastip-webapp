@@ -6,6 +6,7 @@ include ../mixins
         img(src="/images/ip.png", id="ip_image", alt="ip")
         span {{logdata[0].ip}}
     p updated on {{logdata[0].timestamp}} {{timezone}}
+    pre {{device.uname}}
     hr
 
 div.table-responsive
@@ -30,4 +31,8 @@ div.panel.panel-default
     div.panel-body
         p.no-margin <b>Device Key</b>: {{device.key}}
         p.no-margin <b>Registered on</b>: {{registered}}
-    +panelFooter("Download here your settings.json to put in /etc/mylastipd")
+        hr
+        h4 Data from last check-in
+        p.no-margin <b>Delay</b>: {{device.delay}}s
+        p.no-margin <b>Uname</b>: {{device.uname}}s
+    +panelFooter("Download here your settings.json to put in /etc/mylastip")

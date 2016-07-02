@@ -43,6 +43,10 @@ var DeviceSchema = new Schema({
     delay: {
         type: Number,
         trim: true
+    },
+    uname: {
+        type: String,
+        trim: true
     }
 });
 

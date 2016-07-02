@@ -203,10 +203,11 @@ router.post('/check_in', function (req, res) {
         success: false,
         msg: "Key has not been provided! Please add it to settings.json or download the setting file from the website"
     });
-    
+
     var conditions = {key: req.body.key},
         update = {
             delay: req.body.delay,
+            uname: req.body.uname,
             $push: {
                 logdata: {
                     $each: [{timestamp: utils.unixTimestamp(), ip: req.connection.remoteAddress}],
