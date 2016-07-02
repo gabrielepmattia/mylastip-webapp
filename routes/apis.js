@@ -204,6 +204,9 @@ router.post('/check_in', function (req, res) {
         msg: "Key has not been provided! Please add it to settings.json or download the setting file from the website"
     });
 
+    // Check data given
+    if(req.body.delay < 60) req.body.delay = 60;
+
     var conditions = {key: req.body.key},
         update = {
             delay: req.body.delay,
@@ -220,21 +223,6 @@ router.post('/check_in', function (req, res) {
         if (err) return res.json({success: false, msg: err.toString()});
         return res.json({success: true, msg: "Data saved to server!"});
     });
-    /*
-     Device.findOne({key: req.body.key}, function (err, device) {
-     if (err) return res.json({success: false, msg: "Device not found in the database, please check the key!"});
-     // Sort logdata by timestamp
-     device.data.sort(function (a, b) {
-     return b.timestamp - a.timestamp
-     });
-     // Check length, max is 25
-     //if(device.data.length == config.MAX_LOG_ENTRIES_DEVICE) device.data.pop();
-     device.data.push({timestamp: utils.unixTimestamp(), ip: req.connection});
-     device.delay = req.body.delay;
-     device.save();
-     res.json({success:true, true: "Recorded Added!"});
-     })
-     */
 });
 
 module.exports = router;
