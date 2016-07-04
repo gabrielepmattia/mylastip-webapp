@@ -36,3 +36,5 @@ div.panel.panel-default
         p.no-margin <b>Delay</b>: {{device.delay}}s
         p.no-margin <b>Uname</b>: {{device.uname}}s
     +panelFooter("Download here your settings.json to put in /etc/mylastip")
+        div.right
+            +button("primary", undefined, "small", "generateSettingsFile()") Generate setting file

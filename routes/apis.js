@@ -194,7 +194,8 @@ router.post('/remove_all_logdata', passport.authenticate('jwt', {
  * Format that come from raspy is
  * {
  *      key: "<key>",
- *      delay: <seconds>
+ *      delay: <seconds>,
+ *      uname: "<uname output>"
  * }
  */
 
