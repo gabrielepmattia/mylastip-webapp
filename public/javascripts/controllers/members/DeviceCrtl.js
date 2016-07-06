@@ -22,8 +22,9 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
                         // Update view
                         $scope.ip_container = {display: 'block'};
                         $scope.last_data_container = {display: 'block'};
-                        $scope.message = device.logdata.length + device.logdata.length == 1 ? " entry for this device" : " entries for this device";
                         $scope.logdata = device.logdata;
+                        var entries_string = device.logdata.length == 1 ? " entry for this device" : " entries for this device";
+                        $scope.message = device.logdata.length + entries_string;
                         //if (device.logdata.length == 1) $scope.message = device.logdata.length + " entry for this device";
                         //else $scope.message = device.logdata.length + " entries for this device";
                     }
