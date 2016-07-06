@@ -14,14 +14,18 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
                     $scope.device = device;
                     $scope.registered = device.registered_on; // TODO use angular-moment to convert
                     if (device.logdata.length == 0) {
+                        // Update view
                         $scope.ip_container = {display: 'none'};
+                        $scope.last_data_container = {display: 'none'};
                         $scope.message = "No log data for this device yet.";
-                    }
-                    else {
+                    } else {
+                        // Update view
                         $scope.ip_container = {display: 'block'};
-                        if (device.logdata.length == 1) $scope.message = device.logdata.length + " entry for this device";
-                        else $scope.message = device.logdata.length + " entries for this device";
+                        $scope.last_data_container = {display: 'block'};
+                        $scope.message = device.logdata.length + device.logdata.length == 1 ? " entry for this device" : " entries for this device";
                         $scope.logdata = device.logdata;
+                        //if (device.logdata.length == 1) $scope.message = device.logdata.length + " entry for this device";
+                        //else $scope.message = device.logdata.length + " entries for this device";
                     }
                 }
             })
