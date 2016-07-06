@@ -204,7 +204,7 @@ router.post('/check_in', function (req, res) {
         success: false,
         msg: "Key has not been provided! Please add it to settings.json or download the setting file from the website"
     });
-
+    //console.log("====> Received uname :: " + req.body.uname);
     var conditions = {key: req.body.key},
         update = {
             delay: req.body.delay,
