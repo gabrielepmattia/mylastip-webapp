@@ -211,7 +211,7 @@ router.post('/check_in', function (req, res) {
             uname: req.body.uname,
             $push: {
                 logdata: {
-                    $each: [{timestamp: utils.unixTimestamp(), ip: req.connection.remoteAddress}],
+                    $each: [{timestamp: utils.unixTimestamp(), ip: req.connection.remoteAddress}]
                     //$sort: -1
                 }
             }

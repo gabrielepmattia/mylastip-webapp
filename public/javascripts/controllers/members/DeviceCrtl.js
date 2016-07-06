@@ -2,6 +2,10 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
     //$scope.tagline = 'MyLastIPtestmain';
     var ID = $routeParams.id;
     var device;
+
+    /**
+     * This function loads device info and updates the view
+     */
     $scope.load = function () {
         $http
             .post('/api/get_device_info', {id: ID})
@@ -20,6 +24,7 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
                         $scope.message = "No log data for this device yet.";
                     } else {
                         // Update view
+                        $scope.device.uname = device.uname.replace(/#/g," ");
                         $scope.ip_container = {display: 'block'};
                         $scope.last_data_container = {display: 'block'};
                         $scope.logdata = device.logdata;
@@ -55,15 +60,6 @@ angular.module('DeviceCtrl', []).controller('DeviceController', function ($scope
      * This function calls the api that generates the settings.json to download
      */
     $scope.generateSettingsFile = function () {
-        /*
-         $http
-         .post('/api/generate_settings_file', {key: device.key})
-         .success(function (data, status, headers, config) {
-         if (!data.success) $scope.message = "Error during generating json file.";
-         });
-         */
-        //$scope.toJSON = '';
-        //$scope.toJSON = angular.toJson($scope.data);
         var settings_json = {
             "server": "http://" + $window.location.host,
             "key": device.key,
