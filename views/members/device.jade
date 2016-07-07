@@ -30,8 +30,10 @@ br
 div.panel.panel-default
     +panelHeader("Device info")
     div.panel-body
-        p.no-margin <b>Device Key</b>: {{device.key}}
-        p.no-margin <b>Registered on</b>: {{registered}}
+        p.no-margin <b>Device Key</b>:
+            pre.center {{device.key}}
+        p.no-margin <b>Registered on</b>:
+        p.no-margin {{registered | amFromUnix | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
         #last-data(ng-style="last_data_container", style="display:none")
             hr
             h4 Data from last check-in
