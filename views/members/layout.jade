@@ -21,7 +21,7 @@ html(ng-app="mylastip_members")
         script(src='/libs/angular/angular.min.js')
         script(src='/libs/angular-cookies/angular-cookies.min.js')
         script(src='/libs/angular-route/angular-route.min.js')
-        //script(src='/libs/moment/moment.min.js')
+        script(src='/libs/moment/min/moment.min.js')
         script(src='/libs/angular-moment/angular-moment.min.js')
         // ngApp
         script(src='/javascripts/controllers/members/MainCrtl.js')
@@ -30,8 +30,6 @@ html(ng-app="mylastip_members")
         script(src='/javascripts/ngapp_members.js')
 
     body
-
-
 
         block header
             #header
@@ -45,6 +43,8 @@ html(ng-app="mylastip_members")
                 ul.nav.nav-pills(style="display:inline-block")
                     li.nav-item
                         a.nav-link(href="/members") My Devices
+                    li.nav-item
+                        a.nav-link(href="/account") My Account
                     li.nav-item
                         a.nav-link(href="/download") Download
                     li.nav-item

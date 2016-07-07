@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var getIP = require('ipware')().get_ip;
+var moment = require('moment');
 // Common
 var config = require('../config/common');
 var secret = require('../config/secret');
@@ -146,7 +147,13 @@ router.post('/get_device_info', passport.authenticate('jwt', {
         Device.findOne({_id: req.body.id}, function (err, device) {
             if (err) throw err;
             if (!device) res.json({success: false, msg: "No device."});
-            else res.json({success: true, device: device});
+            else {
+                // Sort the logdata array
+                device.logdata.sort(function (a, b) {
+                    return b.timestamp - a.timestamp
+                });
+                res.json({success: true, device: device});
+            }
         });
     }
 });

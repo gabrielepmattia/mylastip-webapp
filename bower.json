@@ -10,7 +10,7 @@
     "angular-cookies": "latest",
     "jquery-ui": "latest",
     "moment": "latest",
-    "angular-moment": "latest"
+    "angular-moment": "1.0.0-beta.6"
   },
   "resolutions": {
     "angular": "1.5.7"

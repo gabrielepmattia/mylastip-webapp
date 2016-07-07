@@ -5,7 +5,8 @@ include ../mixins
     div.display_ip
         img(src="/images/ip.png", id="ip_image", alt="ip")
         span {{logdata[0].ip}}
-    p updated on {{logdata[0].timestamp}} {{timezone}}
+    p updated&nbsp;
+        span(am-time-ago="logdata[0].timestamp | amFromUnix") {{timezone}}
     pre {{device.uname}}
     hr
 
@@ -20,7 +21,7 @@ div.table-responsive
             tr(ng-repeat="x in logdata")
                 td {{x.ordering_number}}
                 td {{x.ip}}
-                td {{x.timestamp}}
+                td {{x.timestamp | amFromUnix | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
     div.center {{message}}
 div.right
     +button("danger", undefined ,"small", 'clearLog()') Clear log
