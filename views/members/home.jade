@@ -15,10 +15,11 @@ div.table-responsive
                 td {{x.ordering_number}}
                 td {{x.name}}
                 td {{x.logdata[0].ip}}
-                td {{x.logdata[0].timestamp}}
+                td
+                    span(am-time-ago="x.logdata[0].timestamp | amFromUnix") {{timezone}}
                 td
                     a(href="/members/device/{{x._id}}") View
-
+//span(am-time-ago="logdata[0].timestamp | amFromUnix")
 div.center {{message}}
 
 div.right

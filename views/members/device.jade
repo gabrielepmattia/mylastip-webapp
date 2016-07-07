@@ -18,8 +18,8 @@ div.table-responsive
                 th IP
                 th Check-in
         tbody
-            tr(ng-repeat="x in logdata")
-                td {{x.ordering_number}}
+            tr(ng-repeat="x in logdata track by $index")
+                td {{$index + 1}}
                 td {{x.ip}}
                 td {{x.timestamp | amFromUnix | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
     div.center {{message}}
